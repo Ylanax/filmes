@@ -4,38 +4,29 @@ include "banner.php";
 ?>
 <div class="container">
     <h2 class="display-5">Melhores avaliações</h2>
-    
+
     <div class="row mt-5">
         <?php
-        /* inicio da conexão com o BD */
-        $servidor = 'localhost';
-        $bd = 'bd_filmes';
-        $usuario = 'root';
-        $senha = '';
+        include "conexao.php";
 
-        $conexao = mysqli_connect($servidor, $usuario, $senha, $bd);
-        if(!$conexao){
-            die("deu ruim" . mysqli_connect_error());
-        }
-        
-        /* fim da conexão */
-
-        $sql = "select * from filmes";
+        $sql = "select * from filmes limit 4";
         $resultado = mysqli_query($conexao, $sql);
 
         //echo "<pre>";
         //print_r($resultado);
         //exit();   
-        while($linha = mysqli_fetch_assoc($resultado)){
-            ?>
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+        ?>
             <div class="col-3">
-            <img src=<?=$linha['foto'];?> class="img-fluid">
-            <h3><?=$linha['titulo'];?></h3>
-            <span>⭐<?=$linha['avaliacao'];?>/10</span>
-        </div>
+                <img src=<?= $linha['foto']; ?> class="img-fluid capa-filme">
+                <h3><?= $linha['titulo']; ?></h3>
+                <span>⭐<?= $linha['avaliacao']; ?>/10</span>
+            </div>
         <?php
         }
+        mysqli_close($conexao);
         ?>
+
     </div>
     <div class="row">
         <div class="col-6">
