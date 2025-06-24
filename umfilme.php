@@ -32,8 +32,8 @@ mysqli_close($conexao);
             <img src="<?= $foto ?>" class="img-fluid">
         </div>
         <div class="col">
-            <h2 class="text-start"><?= $titulo ?></h2>
-            <p>⭐ <?= $avaliacao ?>/10</p>
+            <h2 class="text-start"><?= $titulo?></h2>
+            <p>⭐ <?= $avaliacao?>/10</p>
             <p><strong>Categoria:</strong> <?= $categoria ?></p>
             <p><strong>História:</strong> <?= $historia ?></p>
         </div>
